@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Untitled</title>
+        <link rel="author" href="humans.txt">
+
+        <style>
+
+        body{
+            margin:0px;
+        	padding:0px;
+        }
+
+		#assist-js{
+            position         : absolute;
+            display          : none;
+            margin           : 0px;
+            padding          : 0px;
+        }
+
+		#assist-js.active{
+			display          : block;
+		}
+
+        #assist-js ul{
+           text-align      : left;
+            margin         : 0px;
+            padding        : 0px;
+            text-decoration: none;
+        }
+
+        #assist-js li{
+            display : inline-block;
+            width   : 50px;
+            height  : 50px;
+            cursor  :  pointer;
+        }
+
+        span.underline{
+            text-decoration: underline;
+        }
+
+        li.first{
+            background-color: green;
+        }
+        li.first:hover{
+            background-color: rgba(0, 128, 0, .5);
+        }
+
+        li.second{
+            background-color: blue;
+        }
+
+        li.third{
+            background-color: red;
+        }
+
+        </style>
+    </head>
+    <body>
+        <h1>titre</h1>
+        <p class="chapo">Sed elit est, hendrerit vitae nunc eu,Etiam ornare commodo elit. Curabitur sit amet adipiscing purus. Donec euismod auctor justo non ultricies. Duis tristique scelerisque laoreet. Cras at fermentum sem. Mauris nec accumsan arcu, sed accumsan tellus. Maecenas metus ante, luctus sit amet nulla sit amet, dapibus molestie magna.
+
+Suspendisse porttitor felis ac tempus gravida. Donec lacinia leo augue,Etiam adipiscing dapibus neque consequat ut. Ut et tellus ullamcorper, consectetur tellus eu, dapibus erat. Aenean fringilla erat in nunc adipiscing, at consectetur arcu luctus. Sed rutrum ornare eros, ac rutrum dolor elementum semper. Vivamus venenatis ligula non neque hendrerit, quis faucibus dui adipiscing. Cras faucibus nulla a velit auctor lobortis.
+</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mollis sem, nec luctus ligula. Duis ullamcorper turpis ac purus pretium lacinia non ut metus. Nunc scelerisque urna mollis neque tristique rutrum. Aenean metus turpis, hendrerit id porta non, viverra ut felis. Etiam ultricies vulputate quam vitae molestie. Mauris a fermentum turpis. Donec leo nisi, porttitor et rhoncus vitae, dictum vitae arcu. Etiam tincidunt accumsan arcu, et pellentesque lorem. Nullam lobortis turpis at scelerisque dapibus. Fusce in cursus lorem. Vestibulum a pretium turpis, ut dapibus dolor. Aenean quis lacus nec nulla interdum sodales. Fusce facilisis viverra condimentum.</p>
+
+		<p>Vivamus viverra, sem id lacinia suscipit, arcu nunc scelerisque nisi, luctus feugiat magna arcu placerat nulla. Etiam tristique pulvinar accumsan. In dignissim, urna ac pharetra hendrerit, orci justo porta neque, vel suscipit elit eros a dui. Pellentesque velit lorem, suscipit sit amet arcu ut, commodo cursus magna. Mauris elementum metus sed tellus tristique sagittis. Donec gravida erat dui, ut accumsan magna luctus in. Donec vulputate non magna ullamcorper mollis. Nulla lectus turpis, adipiscing ut mattis a, sollicitudin ac dolor. Maecenas nunc libero, dignissim a neque ac, sollicitudin suscipit ipsum. Curabitur nec varius velit. Vivamus eu auctor lacus. Morbi eget dolor eleifend, gravida ante vel, mollis sem.</p>
+
+		<script type="text/javascript" src="assist.class.js"></script>
+    <script type="text/javascript">
+		(function(){
+
+			var oAssist = new Assist( {
+                        items :[
+                            {
+                                className : 'first',
+                                 isShow    : function( selection, eTarget){
+                                    return true;
+                                },
+                                clickAction   : function( selection, eTarget){
+                                    var oElement = document.createElement('em');
+                                    oElement.textContent = selection;
+                                    return oElement;
+                                }
+                            },
+                             {
+                                className : 'second',
+                                isShow    : function( selection, eTarget){
+                                    return ('Etiam' == selection);
+                                },
+                                clickAction   : function( selection, eTarget){
+                                    var oElement = document.createElement('strong');
+                                    oElement.textContent = selection;
+                                    return oElement;
+                                }
+                            },
+                             {
+                                className : 'third',
+                                isShow    : function( selection, eTarget){
+                                    return (eTarget.className == 'chapo');
+                                },
+                                clickAction   : function( selection, eTarget){
+                                    var oElement = document.createElement('span');
+                                    oElement.setAttribute('class', 'underline');
+                                    oElement.textContent = selection;
+                                    return oElement;
+                                }
+                            }
+                        ]
+                    }
+          );
+       	})();
+        </script>
+    </body>
+</html>
